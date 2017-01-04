@@ -1,24 +1,48 @@
-# README
+##Purpose
+Develop an social network website that allows users to browse and save games.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Team Name
+-Team Gamebook
 
-Things you may want to cover:
+##Team Members
+-Kevin Goltermann
+-Jon Higgerson
+-Chris Massengale
+-Edward Eng
 
-* Ruby version
+##Trello Board
+[trello](https://trello.com/b/7TcBegqd/project-gamebook)
 
-* System dependencies
+##Slack Channel
+[slack](https://jackrabbitschicago.slack.com/messages/team-gamebook/details/)
 
-* Configuration
+##Team Norms
+-communicate on slack if necessary (https://jackrabbitschicago.slack.com/messages/team-tbd/details/).
+-standups (morning/ before and after lunch / before end of day).
+-don't be afraid to ask questions or let team know you're stuck on something.
+-never push to master.
+-good git workflow - clear commit messages often, push often, pull often.
+-be aware of working on files that others might be working on to AVOID HUGE ASS MERGE CONFLICTS.
 
-* Database creation
+(good git workflow)
+1. LET WHOLE TEAM KNOW WHEN THERES AN UPDATED VERSION OF MASTER AFTER YOU CONFIRM MERGE
+2. PULL FROM MASTER TO LOCAL. MERGE NEW MASTER INTO YOUR BRANCH TO HAVE LATEST MASTER
 
-* Database initialization
+##MVP
+-games index
+-games show
+-users show
+-users new
+-sessions new
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+##User Stories
+-Anyone can see a list of all games on the homepage.
+-A user can register for an account.
+-A user can log in.
+-A user can see his or her own profile page.
+-A logged in user can save games under their account.
+-A logged in user can comment on a game.
+-A logged in user upvote or downvote a game.
+-A logged in user can upvote or downvote a comment.
+-A logged in user can add or decline friends requests.
+-A loggged in user can add games that their users have saved.
