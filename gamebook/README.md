@@ -37,6 +37,7 @@ Develop an social network website that allows users to browse and save games.
 
 ##User Stories
 -Anyone can see a list of all games on the homepage.
+-Anyone can see a games details page.
 -A user can register for an account.
 -A user can log in.
 -A user can see his or her own profile page.
@@ -45,4 +46,4 @@ Develop an social network website that allows users to browse and save games.
 -A logged in user upvote or downvote a game.
 -A logged in user can upvote or downvote a comment.
 -A logged in user can add or decline friends requests.
--A loggged in user can add games that their users have saved.
+-A logged in user can add games that their users have saved.
