@@ -13,8 +13,9 @@ feature 'visiting the homepage' do
 
   scenario 'the user sees a links nav bar' do
     visit '/'
-    page.should have_link('Register')
-    page.should have_link('Login')
-    page.should have_link('Users')
+
+    expect(page).to have_link('Register')
+    expect(page).to have_link('Login')
+    expect(page).to have_link('Users')
   end
 end
