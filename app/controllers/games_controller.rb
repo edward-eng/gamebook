@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    @
+    
   end
 
 end
