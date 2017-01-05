@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  validates :name, :email, :password_hash, presence: true
-  validates :email, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
+  # validates :name, :email, :password_hash, presence: true
+  # validates :email, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
 
     def new
 
