@@ -1,8 +1,21 @@
 class UserController < ApplicationController
+  validates :name, :email, :password_hash, presence: true
+  validates :email, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
 
+    def new
 
-   def new
-    User.create(params[:user])
+    end
+
+   def create
+     @user = User.new(params[:user])
+
+     if @user.save
+       session[:user] = @user.id
+       redirect "/"
+     else
+       @errors = @user.errors.full_messages
+       render'/users/new'
+     end
 
    end
 
