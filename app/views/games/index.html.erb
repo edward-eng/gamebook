@@ -1,6 +1,8 @@
 <div class="game-list">
   <h2>Games</h2>
   <% @games.each do |game| %>
-    <p><%= game.name %></p>
+    <p><%= game.name %> | <%= game.saved_games.count %> Saves
+      <button>save this game</button>
+    </p>
   <% end %>
 </div>
