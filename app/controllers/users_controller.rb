@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-  # validates :name, :email, :password_hash, presence: true
-  # validates :email, format: { with: /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
 
     def new
 
     end
 
    def create
-     @user = User.new(params[:users])
+     @user = User.new(user_params)
 
      if @user.save
        session[:users] = @user.id
-       redirect "/"
+       redirect_to :controller => 'games', :action => 'index'
      else
        @errors = @user.errors.full_messages
        render'/users/new'
@@ -19,19 +17,10 @@ class UsersController < ApplicationController
 
    end
 
-    private
+  private
 
-   def password
-     @password ||= BCrypt::Password.new(password_hash)
-   end
-
-   def password=(new_password)
-     @password = BCrypt::Password.create(new_password)
-     self.password_hash = @password
-   end
-
-   def authenticate(password)
-     self.password == password
-   end
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 
 end
