@@ -10,4 +10,11 @@ feature 'visiting the homepage' do
       expect(page).to have_content some_game.name
     end
   end
+
+  scenario 'the user sees a links nav bar' do
+    visit '/'
+    page.should have_link('Register')
+    page.should have_link('Login')
+    page.should have_link('Users')
+  end
 end
