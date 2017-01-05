@@ -16,6 +16,9 @@ Develop an social network website that allows users to browse and save games.
 ##Slack Channel
 [slack](https://jackrabbitschicago.slack.com/messages/team-gamebook/details/)
 
+##Heroku Link
+[heroku](https://team-gamebook.herokuapp.com/)
+
 ##Team Norms
 -communicate on slack if necessary (https://jackrabbitschicago.slack.com/messages/team-tbd/details/).
 -standups (morning/ before and after lunch / before end of day).

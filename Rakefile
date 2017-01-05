@@ -4,3 +4,7 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+
+# require File.expand_path('../config/application', __FILE__)
+
+# Rails.application.load_tasks
