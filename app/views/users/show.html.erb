@@ -1,13 +1,36 @@
 <div>
+
   <div>
     <h1 class="title">Welcome, <%=@user.name %></h1>
   </div>
+
   <div>
     <h2>Your Saved Games</h2>
-      <ul>
-    <% @user.games.each do |game| %>
+    <ul>
+      <% @user.games.each do |game| %>
         <li><%=game.name%></li>
-    <% end %>
-      </ul>
+      <% end %>
+    </ul>
   </div>
+
+  <div>
+    <h2>Your Friends</h2>
+    <ul>
+      <% @user.accepted_friends.each do |friendship| %>
+        <li><%=friendship.requesting_friend.name%></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Pending Friend Requests</h2>
+    <ul>
+      <% @user.requested_friendships.each do |friend| %>
+        <li><%=friend.accepting_friend.name%></li>
+      <% end %>
+    </ul>
+  </div>
+
 </div>
+
+<!-- (friend.games.count) -->

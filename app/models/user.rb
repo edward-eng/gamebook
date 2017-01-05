@@ -7,4 +7,18 @@ class User < ApplicationRecord
   has_many :requests, through: :requested_friendships, source: :requesting_friend
   has_many :accepts, through: :accepted_friendships, source: :accepting_friend
   has_many :votes, foreign_key: :voter_id
+
+  def friends_finder
+    accepted_friendships + requested_friendships
+    # friends = []
+    # friends << self.accepted_friendships
+    # friends << self.requested_friendships
+    # friends
+  end
+
+  def accepted_friends
+    friends_finder.select do |friendship|
+      friendship.pending_request == false
+    end
+  end
 end
