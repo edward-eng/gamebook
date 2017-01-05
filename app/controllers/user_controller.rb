@@ -1,5 +1,5 @@
 class UserController < ApplicationController
-<<<<<<< HEAD
+
 
    def new
     User.create(params[:user])
@@ -21,6 +21,4 @@ class UserController < ApplicationController
      self.password == password
    end
 
-=======
->>>>>>> 99ecd86845986fb783f96575b9dae65fbf3250de
 end
