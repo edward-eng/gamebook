@@ -9,7 +9,7 @@
         <h2>Your Saved Games</h2>
         <ul>
           <% @user.games.each do |game| %>
-            <li><%=game.name%></li>
+            <li><%= link_to game.name, game_path(game) %> | <%= game.saved_games.count %> saves</li>
           <% end %>
         </ul>
       </div>
@@ -18,7 +18,7 @@
         <h2>Your Friends</h2>
         <ul>
           <% @user.accepted_friends.each do |friend| %>
-            <li><%=friend.name%>  (<%=friend.games.count%> games)</li>
+            <li><%= link_to friend.name, user_path(friend) %> (<%=friend.games.count%> saved games)</li>
           <% end %>
         </ul>
       </div>
