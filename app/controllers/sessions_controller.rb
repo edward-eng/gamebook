@@ -5,14 +5,12 @@ class SessionsController < ApplicationController
 
     if @user
       if @user.authenticate(params[:user][:password])
-
         session[:users] = @user.id
-        redirect_to :controller => 'games', :action => 'index'
-        # redirect_to :controller => 'users', :action => 'show'
+
+        # redirect_to '/users/'+session[:users].to_s
+        redirect_to :controller => 'users', :action => 'show', id: session[:users]
       else
-
         @errors = @user.errors.full_messages
-
         render "/sessions/new"
       end
     else
