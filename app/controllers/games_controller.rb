@@ -7,4 +7,5 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
+  #test comment, need to delete this
 end
