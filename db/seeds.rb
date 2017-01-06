@@ -1,3 +1,4 @@
+require 'bgg'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -11,10 +12,10 @@ User.create!(name: 'Jon', email: 'j1@gmail.com', hashed_password: '1')
 User.create!(name: 'Kevin', email: 'k1@gmail.com', hashed_password: '1')
 User.create!(name: 'Ed', email: 'e1@gmail.com', hashed_password: '1')
 
-Game.create!(name: 'Settlers of Catan', game_type: 'board', pic: 'http://www.pic1.com', description: 'something1', rules_url: 'http://www.rules1.com', duration: '1hr', players: '2-4')
-Game.create!(name: 'Monopoly', game_type: 'board', pic: 'http://www.pic2.com', description: 'something2', rules_url: 'http://www.rules2.com', duration: '1hr', players: '2-4')
-Game.create!(name: 'Love Letter', game_type: 'card', pic: 'http://www.pic3.com', description: 'something3', rules_url: 'http://www.rules3.com', duration: '1hr', players: '2-4')
-Game.create!(name: 'Cards of Humanity', game_type: 'card', pic: 'http://www.pic4.com', description: 'something4', rules_url: 'http://www.rules4.com', duration: '1hr', players: '2-4')
+# Game.create!(name: 'Settlers of Catan', game_type: 'board', pic: 'http://www.pic1.com', description: 'something1', rules_url: 'http://www.rules1.com', duration: '1hr', players: '2-4')
+# Game.create!(name: 'Monopoly', game_type: 'board', pic: 'http://www.pic2.com', description: 'something2', rules_url: 'http://www.rules2.com', duration: '1hr', players: '2-4')
+# Game.create!(name: 'Love Letter', game_type: 'card', pic: 'http://www.pic3.com', description: 'something3', rules_url: 'http://www.rules3.com', duration: '1hr', players: '2-4')
+# Game.create!(name: 'Cards of Humanity', game_type: 'card', pic: 'http://www.pic4.com', description: 'something4', rules_url: 'http://www.rules4.com', duration: '1hr', players: '2-4')
 
 Comment.create!(body: 'test1', game_id: 1, commenter_id: 1)
 Comment.create!(body: 'test2', game_id: 2, commenter_id: 2)
@@ -39,3 +40,65 @@ Classification.create!(category_id: 3, game_id: 1)
 Friendship.create!(accepting_id: 1, requesting_id: 2)
 Friendship.create!(accepting_id: 1, requesting_id: 3)
 Friendship.create!(accepting_id: 1, requesting_id: 4)
+
+
+#NUMBER OF MOVIES
+NUMBER_BOARD_GAMES_INFO = 25
+SECONDS_BETWEEN_REQUESTS = 2  #in seconds, limits hits to Boardgamegeek.com
+
+i=1
+
+while i < NUMBER_BOARD_GAMES_INFO
+  my_game= BggApi.thing({id: i})  #Selects item 1 only - not sure how to get all of the games 
+
+  # p my_game.keys
+  #hash requires you to get the 'item'
+  game_info= my_game["item"]
+   # game_info
+  #p game_info[0].keys
+
+  #Can't find name
+  game_name = game_info[0]["name"][0]["value"]
+  # puts "Game Name; #{game_name}"
+
+  #Game Type
+  game_type = game_info[0]["type"]
+
+  #Description
+  game_desc = game_info[0]["description"][0]
+  # puts "Description: #{game_desc}"
+
+  #Min Players
+  min_players = game_info[0]["minplayers"][0]["value"]
+  # puts "Min Players: #{min_players}"
+
+  #Max Players
+  max_players = game_info[0]["maxplayers"][0]["value"]
+  # puts "Max Players: #{max_players}"
+
+  num_players = min_players != max_players ? "#{min_players}-#{max_players}" : "#{min_players}"
+  # puts "Num Players: #{num_players}"
+  #image
+  game_image_url = game_info[0]["image"][0]
+  # puts "image path #{game_image_url}"
+
+  #duration
+  #min time
+  min_time = game_info[0]["minplaytime"][0]["value"]
+  # max_time -- can be same as min time
+  max_time = game_info[0]["maxplaytime"][0]["value"]
+  #playing_time -- assumed to be average
+  playing_time = game_info[0]["playingtime"][0]["value"]
+  #time to play
+  time_to_play = (min_time != max_time) ? "#{min_time}-#{max_time} mins." : "#{playing_time} mins."
+
+  # puts "min time (min): #{min_time}"
+  # puts "max time (min): #{max_time}"
+  # puts "playing time (min): #{playing_time}"
+  # puts "time_to_play (min): #{time_to_play}"
+  sleep SECONDS_BETWEEN_REQUESTS
+
+  Game.create!(name: game_name, game_type: game_type, pic: "https:#{game_image_url}", description: game_desc, rules_url: 'n/a', duration: "#{time_to_play}", players: "#{num_players}")
+
+  i+=1
+end
