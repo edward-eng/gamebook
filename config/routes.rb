@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'games#index'
   resources :users, :sessions
   get 'games/:id' => 'games#show', as: :games
+  post '/saved_games' => 'saved_games#create', as: :saved_games
 end
