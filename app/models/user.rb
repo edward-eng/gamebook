@@ -22,6 +22,18 @@ class User < ApplicationRecord
     self.hashed_password = @password
   end
 
+  def is_friend(friend_id)
+    friendships = friends_finder
+    f = friendships.select do |friendship|
+      friendship.accepting_id  == friend_id || friendship.requesting_id == friend_id
+    end
+    if f.length == 0
+      return false
+    else
+      return true
+    end
+  end
+
   def friends_finder
     accepted_friendships + requested_friendships
     # friends = []

@@ -13,6 +13,7 @@ User.create!(name: 'Kevin', email: 'k1@gmail.com', password: '1')
 User.create!(name: 'Ed', email: 'e1@gmail.com', password: '1')
 User.create!(name: 'Guy', email: 'g1@gmail.com', password: '1')
 
+
 # Game.create!(name: 'Settlers of Catan', game_type: 'board', pic: 'http://www.pic1.com', description: 'something1', rules_url: 'http://www.rules1.com', duration: '1hr', players: '2-4')
 # Game.create!(name: 'Monopoly', game_type: 'board', pic: 'http://www.pic2.com', description: 'something2', rules_url: 'http://www.rules2.com', duration: '1hr', players: '2-4')
 # Game.create!(name: 'Love Letter', game_type: 'card', pic: 'http://www.pic3.com', description: 'something3', rules_url: 'http://www.rules3.com', duration: '1hr', players: '2-4')

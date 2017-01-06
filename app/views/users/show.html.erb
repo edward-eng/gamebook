@@ -1,36 +1,55 @@
 <div>
+  <% if logged_in? %>
+    <% if current_user.id == @user.id %>
+      <div>
+        <h1 class="title">Welcome, <%=@user.name %></h1>
+      </div>
 
-  <div>
-    <h1 class="title">Welcome, <%=@user.name %></h1>
-  </div>
+      <div>
+        <h2>Your Saved Games</h2>
+        <ul>
+          <% @user.games.each do |game| %>
+            <li><%=game.name%></li>
+          <% end %>
+        </ul>
+      </div>
 
-  <div>
-    <h2>Your Saved Games</h2>
-    <ul>
-      <% @user.games.each do |game| %>
-        <li><%=game.name%></li>
-      <% end %>
-    </ul>
-  </div>
+      <div>
+        <h2>Your Friends</h2>
+        <ul>
+          <% @user.accepted_friends.each do |friend| %>
+            <li><%=friend.name%>  (<%=friend.games.count%> games)</li>
+          <% end %>
+        </ul>
+      </div>
 
-  <div>
-    <h2>Your Friends</h2>
-    <ul>
-      <% @user.accepted_friends.each do |friend| %>
-        <li><%=friend.name%></li>
-      <% end %>
-    </ul>
-  </div>
+      <div>
+        <h2>Pending Friend Requests</h2>
+        <ul>
+          <% @user.pending_friends.each do |friend| %>
+            <li><%=friend.name%>  (<%=friend.games.count%> games)<button>Accept Friend</button></li>
+          <% end %>
+        </ul>
+      </div>
+    <% elsif @user.is_friend(session[:users])  %>
+            <div>
+        <h1 class="title"><%=@user.name %>'s Profile Page</h1>
+      </div>
 
-  <div>
-    <h2>Pending Friend Requests</h2>
-    <ul>
-      <% @user.pending_friends.each do |friend| %>
-        <li><%=friend.name%>  <button>Accept Friend</button></li>
-      <% end %>
-    </ul>
-  </div>
-
+      <div>
+        <h2><%=@user.name %>'s Saved Games</h2>
+        <ul>
+          <% @user.games.each do |game| %>
+            <li><%=game.name%></li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <h1>Not Your Friend Yet </h1>
+      <button>Add Friend</button>
+    <% end %>
+  <% else %>
+    <h1>Please Login to view users</h1>
+  <% end %>
 </div>
 
-<!-- (friend.games.count) -->
