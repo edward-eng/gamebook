@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   post '/saved_games' => 'saved_games#create', as: :saved_games
   get 'games' => 'games#index', as: :games
   get 'games/:id' => 'games#show', as: :game
+
+
+  post 'games/:id/comments' => 'comments#create'
+
 end
