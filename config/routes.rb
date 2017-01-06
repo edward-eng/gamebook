@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get 'games/:id' => 'games#show', as: :game
 
 
-  resources :comments, only: [:create]
+  post 'games/:id/comments' => 'comments#create'
 
 end

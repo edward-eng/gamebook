@@ -27,7 +27,7 @@
   <section class="comments">
     <h3>Comments</h3>
     <div id="add-comment">
-      <%= render partial: "comment"%>
+      <%= render partial: "comment", locals: {game: @game} %>
     </div>
     <ul>
       <% @game.comments.each do |comment| %>
