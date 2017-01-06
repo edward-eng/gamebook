@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :users, :sessions
 
   get 'games/:id' => 'games#show'
-
+#test
 end
