@@ -10,7 +10,9 @@
          name="authenticity_token"/>
           <input type="hidden" name="friends[requesting_id]" value='<%=current_user.id%>'>
            <input type="hidden" name="friends[accepting_id]" value='<%=user.id%>'>
-           <button type="submit">Add Friend</button>
+           <% if current_user.id != user.id %>
+            <button type="submit">Add Friend</button>
+           <% end %>
         </form>
       <% end %>
     </p>
