@@ -13,10 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+ background-color: #BEB9B5;
+ /*background: url("wood.jpg");*/
+ /*background-repeat: repeat;*/
+ }
 .container {
-  margin: 20px auto;
+  margin: 0px auto;
   width: 800px;
   padding: 0px 20px 20px 20px;
   border: 1px dotted black;
-  background-color: white;
+  background-color: #96C0CE;
 }
+h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+header {
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  background-color: #C25B56;
+  margin-right: 0px;
+  margin-left: 0px;
+
+}
+
+.game {
+  display: inline-block;
+  margin-left: 30px;
+
+
+}
+
+.game-title {
+  width: 200px;
+}
+
