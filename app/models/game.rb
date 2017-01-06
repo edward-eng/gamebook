@@ -4,4 +4,5 @@ class Game < ApplicationRecord
   has_many :classifications
   has_many :categories, through: :classifications
   has_many :votes, as: :votable
+  has_many :comments
 end
