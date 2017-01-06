@@ -1,7 +1,7 @@
 <div class="user-list">
   <h2>Users</h2>
   <% @users.each do |user| %>
-    <% if current_user.id != user.id %>
+    <% if current_user == nil || logged_in? %>
       <p><%= link_to user.name, user_path(user) %> | <%= user.saved_games.count %> saved games
       <%if logged_in? %>
         <form  method='post' action='/friendships'>
