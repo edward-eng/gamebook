@@ -1,15 +1,19 @@
 <div class="user-list">
   <h2>Users</h2>
   <% @users.each do |user| %>
-    <p><%= link_to user.name, user_path(user) %> | <%= user.saved_games.count %> saved games
-      <form  method='post' action='/friendships'>
-        <input type="hidden"
-       value="<%= form_authenticity_token() %>"
-       name="authenticity_token"/>
-        <input type="hidden" name="friends[requesting_id]" value='<%=current_user.id%>'>
-         <input type="hidden" name="friends[accepting_id]" value='<%=user.id%>'>
-         <button type="submit">Add Friend</button>
-      </form>
+    <% if current_user.id != user.id %>
+      <p><%= link_to user.name, user_path(user) %> | <%= user.saved_games.count %> saved games
+      <%if logged_in? %>
+        <form  method='post' action='/friendships'>
+          <input type="hidden"
+         value="<%= form_authenticity_token() %>"
+         name="authenticity_token"/>
+          <input type="hidden" name="friends[requesting_id]" value='<%=current_user.id%>'>
+           <input type="hidden" name="friends[accepting_id]" value='<%=user.id%>'>
+           <button type="submit">Add Friend</button>
+        </form>
+      <% end %>
     </p>
+    <% end %>
   <% end %>
 </div>
