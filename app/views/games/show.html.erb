@@ -8,13 +8,21 @@
     <%= @game.description%><br /><br />
     <span class="game-detail">Type of Game:</span>
     <%= @game.game_type %><br />
-    <span class="game-detail">Link to Rules</span>
-    <%= link_to "Rules", @game.rules_url%><br />
     <span class="game-detail">Game Duration (minutes):</span>
     <%= @game.duration %><br />
     <span class="game-detail">Number of Players:</span>
     <%= @game.players %><br />
-  </section>
+  </section><br>
+
+  <div class="save-game">
+    <% if logged_in? %>
+      <% if !saved_game?(@game.id) %>
+        <button><%= link_to 'save this game', saved_games_path(@saved_game, user_id: session[:users], game_id: @game.id), method: :post %></button></p>
+      <% end %>
+    <% else %>
+      <button><%= link_to 'save this game', new_session_path %></button></p>
+    <% end %>
+  </div>
 
   <section class="comments">
     <h3>Comments</h3>
