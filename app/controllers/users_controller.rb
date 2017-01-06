@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     def new
-
+      @user = User.new
     end
 
    def create
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
        @errors = @user.errors.full_messages
        render'/users/new'
      end
-
    end
 
   private
