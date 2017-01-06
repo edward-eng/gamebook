@@ -1,8 +1,8 @@
 <h1>Registration</h1>
 
 <%=  form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> name:</br> <%= f.text_field :name%> </p>
-    <p> Email:</br> <%= f.text_field :email%> </p>
-    <p> Password:</br> <%= f.password_field :password%></p>
-    <%= f.submit :Signup %>
+  <p> name:</br> <%= f.text_field :name%> </p>
+  <p> Email:</br> <%= f.text_field :email%> </p>
+  <p> Password:</br> <%= f.password_field :password%></p>
+  <%= f.submit :Signup %>
 <% end %>

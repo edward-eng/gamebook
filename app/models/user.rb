@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :accepts, through: :accepted_friendships, source: :accepting_friend
   has_many :votes, foreign_key: :voter_id
 
-
   def password
     @password ||= BCrypt::Password.new(hashed_password)
   end
@@ -24,5 +23,4 @@ class User < ApplicationRecord
   def authenticate(password)
     self.password == password
   end
-
 end
