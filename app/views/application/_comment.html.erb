@@ -1,0 +1,6 @@
+<%= form_tag("/games/#{game.id}/comments", method: :post) do%>
+  <%= text_field_tag :body, nil, placeholder: "enter comment" %>
+  <%= submit_tag "Enter Comment" %>
+<%end%>
+
+

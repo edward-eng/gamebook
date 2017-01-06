@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'games/:id' => 'games#show', as: :game
   post '/friendships' => 'friendships#create'
   put '/friendships' => 'friendships#update'
+  post 'games/:id/comments' => 'comments#create'
 end
