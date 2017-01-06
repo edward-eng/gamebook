@@ -1,0 +1,27 @@
+<div id=game-show>
+  <section class="game-info">
+    <h2><%= @game.name %></h2>
+      <br>
+    <%= image_tag @game.pic, {class: "game", alt: @game.name + 'pic' } %>
+      <br />
+    <h3> Game Description:</h3>
+    <%= @game.description%><br /><br />
+    <span class="game-detail">Type of Game:</span>
+    <%= @game.game_type %><br />
+    <span class="game-detail">Link to Rules</span>
+    <%= link_to "Rules", @game.rules_url%><br />
+    <span class="game-detail">Game Duration (minutes):</span>
+    <%= @game.duration %><br />
+    <span class="game-detail">Number of Players:</span>
+    <%= @game.players %><br />
+  </section>
+
+  <section class="comments">
+    <h3>Comments</h3>
+    <ul>
+      <% @game.comments.each do |comment| %>
+        <li><%=comment.body%></li>
+      <% end %>
+    </ul>
+  </section>
+</div>
