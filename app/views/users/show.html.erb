@@ -26,7 +26,7 @@
     <h2>Pending Friend Requests</h2>
     <ul>
       <% @user.requested_friendships.each do |friend| %>
-        <li><%=friend.accepting_friend.name%></li>
+        <li><%=friend.accepting_friend.name%>  <button>Accept Friend</button></li>
       <% end %>
     </ul>
   </div>
