@@ -1,0 +1,8 @@
+<div class="user-list">
+  <h2>Users</h2>
+  <% @users.each do |user| %>
+    <p><%= link_to user.name, user_path(user) %> | <%= user.saved_games.count %> saved games
+      <button>become friends</button>
+    </p>
+  <% end %>
+</div>
