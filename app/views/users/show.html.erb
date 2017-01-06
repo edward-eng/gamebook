@@ -27,7 +27,14 @@
         <h2>Pending Friend Requests</h2>
         <ul>
           <% @user.pending_friends.each do |friend| %>
-            <li><%=friend.name%>  (<%=friend.games.count%> games)<button>Accept Friend</button></li>
+            <li><%=friend.name%>  (<%=friend.games.count%> games)
+                <form  method='post' action='/friendships'>
+                  <input type='hidden' name="_method" value="put">
+                  <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token"/>
+                  <input type="hidden" name="friends[requesting_id]" value='<%=friend.id%>'>
+                   <input type="hidden" name="friends[accepting_id]" value='<%=current_user.id%>'>
+                   <button type="submit">Accept Friend</button>
+                </form>
           <% end %>
         </ul>
       </div>
@@ -45,8 +52,14 @@
         </ul>
       </div>
     <% else %>
-      <h1>Not Your Friend Yet </h1>
-      <button>Add Friend</button>
+      <form  method='post' action='/friendships'>
+        <input type="hidden"
+       value="<%= form_authenticity_token() %>"
+       name="authenticity_token"/>
+        <input type="hidden" name="friends[requesting_id]" value='<%=current_user.id%>'>
+         <input type="hidden" name="friends[accepting_id]" value='<%=@user.id%>'>
+         <button type="submit">Add Friend</button>
+      </form>
     <% end %>
   <% else %>
     <h1>Please Login to view users</h1>
