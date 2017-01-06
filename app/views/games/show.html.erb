@@ -2,7 +2,7 @@
   <section class="game-info">
     <h2><%= @game.name %></h2>
       <br>
-    <%= image_tag @game.pic, {class: "game", alt: @game.name + 'pic' } %>
+    <%= image_tag @game.pic, {class: "game", alt: @game.name + 'pic', width: '100px', height: '100px' } %>
       <br />
     <h3> Game Description:</h3>
     <%= @game.description%><br /><br />
