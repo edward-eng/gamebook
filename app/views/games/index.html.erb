@@ -1,12 +1,13 @@
 <div class="game-list">
   <h2>Games</h2>
   <% @games.each do |game| %>
-    <p><%= link_to game.name, games_path(game) %> | <%= game.saved_games.count %> Saves
+    <p><%= link_to game.name, game_path(game) %> | <%= game.saved_games.count %> Saves
       <% if logged_in? %>
-        <button><%= link_to 'save this game', saved_games_path(@saved_game, user_id: session[:user_id], game_id: game.id), method: :post %></button>
+        <% if !saved_game?(game.id) %>
+          <button><%= link_to 'save this game', saved_games_path(@saved_game, user_id: session[:users], game_id: game.id), method: :post %></button></p>
+        <% end %>
       <% else %>
-        <button><%= link_to 'save this game', new_session_path %></button>
+        <button><%= link_to 'save this game', new_session_path %></button></p>
       <% end %>
-    </p>
   <% end %>
 </div>
