@@ -12,9 +12,11 @@ class UsersController < ApplicationController
 
    if @user.save
      session[:users] = @user.id
+
      redirect_to :controller => 'games', :action => 'index'
    else
      @errors = @user.errors.full_messages
+
      render'/users/new'
    end
   end
