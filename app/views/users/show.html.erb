@@ -45,8 +45,14 @@
         </ul>
       </div>
     <% else %>
-      <h1>Not Your Friend Yet </h1>
-      <span> button_to "Add Friend", friendship_path </span>
+      <form  method='post' action='/friendships'>
+        <input type="hidden"
+       value="<%= form_authenticity_token() %>"
+       name="authenticity_token"/>
+        <input type="hidden" name="friends[requesting_id]" value='<%=current_user.id%>'>
+         <input type="hidden" name="friends[accepting_id]" value='<%=@user.id%>'>
+         <button type="submit">Add Friend</button>
+      </form>
     <% end %>
   <% else %>
     <h1>Please Login to view users</h1>
