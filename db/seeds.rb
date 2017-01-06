@@ -10,6 +10,7 @@ User.create!(name: 'Chris', email: 'c1@gmail.com', hashed_password: '1')
 User.create!(name: 'Jon', email: 'j1@gmail.com', hashed_password: '1')
 User.create!(name: 'Kevin', email: 'k1@gmail.com', hashed_password: '1')
 User.create!(name: 'Ed', email: 'e1@gmail.com', hashed_password: '1')
+User.create!(name: 'Guy', email: 'g1@gmail.com', hashed_password: '1')
 
 Game.create!(name: 'Settlers of Catan', game_type: 'board', pic: 'http://www.pic1.com', description: 'something1', rules_url: 'http://www.rules1.com', duration: '1hr', players: '2-4')
 Game.create!(name: 'Monopoly', game_type: 'board', pic: 'http://www.pic2.com', description: 'something2', rules_url: 'http://www.rules2.com', duration: '1hr', players: '2-4')
@@ -36,6 +37,12 @@ Classification.create!(category_id: 1, game_id: 1)
 Classification.create!(category_id: 4, game_id: 1)
 Classification.create!(category_id: 3, game_id: 1)
 
-Friendship.create!(accepting_id: 1, requesting_id: 2)
-Friendship.create!(accepting_id: 1, requesting_id: 3)
-Friendship.create!(accepting_id: 1, requesting_id: 4)
+Friendship.create!(accepting_id: 1, requesting_id: 2, pending_request: false)
+Friendship.create!(accepting_id: 1, requesting_id: 3, pending_request: false)
+Friendship.create!(accepting_id: 1, requesting_id: 4, pending_request: false)
+Friendship.create!(accepting_id: 1, requesting_id: 5, pending_request: true)
+Friendship.create!(accepting_id: 2, requesting_id: 5, pending_request: true)
+Friendship.create!(accepting_id: 3, requesting_id: 5, pending_request: true)
+Friendship.create!(accepting_id: 4, requesting_id: 5, pending_request: true)
+
+
