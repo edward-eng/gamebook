@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def current_user
-    return User.find(session[:users]).name
+    return User.find(session[:users])
   end
 end
