@@ -32,7 +32,18 @@
         </ul>
       </div>
     <% elsif @user.is_friend(session[:users])  %>
-      <h1>You are friends</h1>
+            <div>
+        <h1 class="title"><%=@user.name %>'s Profile Page</h1>
+      </div>
+
+      <div>
+        <h2><%=@user.name %>'s Saved Games</h2>
+        <ul>
+          <% @user.games.each do |game| %>
+            <li><%=game.name%></li>
+          <% end %>
+        </ul>
+      </div>
     <% else %>
       <h1>Not Your Friend Yet </h1>
       <button>Add Friend</button>
@@ -40,7 +51,5 @@
   <% else %>
     <h1>Please Login to view users</h1>
   <% end %>
-
 </div>
 
-<!-- (friend.games.count) -->
