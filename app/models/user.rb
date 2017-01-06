@@ -12,18 +12,6 @@ class User < ApplicationRecord
   has_many :votes, foreign_key: :voter_id
 
 
-  # def friends_finder
-  #   accepted_friendships + requested_friendships
-  #   # friends = []
-  #   # friends << self.accepted_friendships
-  #   # friends << self.requested_friendships
-  #   # friends
-  # end
-
-  # def accepted_friends
-  #   friends_finder.select do |friendship|
-  #     friendship.pending_request == false
-  #   end
 
   def password
     @password ||= BCrypt::Password.new(hashed_password)
@@ -34,7 +22,51 @@ class User < ApplicationRecord
     self.hashed_password = @password
   end
 
+  def friends_finder
+    accepted_friendships + requested_friendships
+    # friends = []
+    # friends << self.accepted_friendships
+    # friends << self.requested_friendships
+    # friends
+  end
+
+  def accepted_friends
+    friends_finder.select do |friendship|
+      friendship.pending_request == false
+    end
+  end
+
   def authenticate(password)
     self.password == password
   end
+
+  def accepted_friends
+    return get_friends(false)
+  end
+
+  def pending_friends
+    return get_friends(true)
+  end
+
+  private
+
+    def get_friends(is_pending)
+
+      #Select friendships that are either pending or accepted
+      # based on whether parameter is_pending
+      friendships = friends_finder.select do |friendship|
+        friendship.pending_request == is_pending
+      end
+
+      #determine based on user who the friends are
+      friends = friendships.map do |f|
+        if f.accepting_id == id then
+          f.requesting_friend
+        else
+          f.accepting_friend
+        end
+      end
+
+      return friends
+    end
 end

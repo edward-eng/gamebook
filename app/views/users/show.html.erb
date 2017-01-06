@@ -16,8 +16,8 @@
   <div>
     <h2>Your Friends</h2>
     <ul>
-      <% @user.accepted_friends.each do |friendship| %>
-        <li><%=friendship.requesting_friend.name%></li>
+      <% @user.accepted_friends.each do |friend| %>
+        <li><%=friend.name%></li>
       <% end %>
     </ul>
   </div>
@@ -25,8 +25,8 @@
   <div>
     <h2>Pending Friend Requests</h2>
     <ul>
-      <% @user.requested_friendships.each do |friend| %>
-        <li><%=friend.accepting_friend.name%>  <button>Accept Friend</button></li>
+      <% @user.pending_friends.each do |friend| %>
+        <li><%=friend.name%>  <button>Accept Friend</button></li>
       <% end %>
     </ul>
   </div>
