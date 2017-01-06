@@ -1,5 +1,5 @@
 <h1>Registration</h1>
-
+<%= render partial: 'errors' %>
 <%=  form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
   <p> name:</br> <%= f.text_field :name%> </p>
   <p> Email:</br> <%= f.text_field :email%> </p>
