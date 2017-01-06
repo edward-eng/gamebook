@@ -1,5 +1,5 @@
 <div>
-
+<% if current_user.id == session[:user] %>
   <div>
     <h1 class="title">Welcome, <%=@user.name %></h1>
   </div>
@@ -17,7 +17,7 @@
     <h2>Your Friends</h2>
     <ul>
       <% @user.accepted_friends.each do |friend| %>
-        <li><%=friend.name%></li>
+        <li><%=friend.name%>  (<%=friend.games.count%> games)</li>
       <% end %>
     </ul>
   </div>
@@ -26,10 +26,33 @@
     <h2>Pending Friend Requests</h2>
     <ul>
       <% @user.pending_friends.each do |friend| %>
-        <li><%=friend.name%>  <button>Accept Friend</button></li>
+        <li><%=friend.name%>  (<%=friend.games.count%> games)<button>Accept Friend</button></li>
       <% end %>
     </ul>
   </div>
+<% else %>
+ <div>
+    <h1 class="title"><%=@user.name %>'s Profile Page</h1>
+  </div>
+
+  <div>
+    <h2><%=@user.name %>'s Saved Games</h2>
+    <ul>
+      <% @user.games.each do |game| %>
+        <li><%=game.name%></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <h2><%=@user.name %>'s Friends</h2>
+    <ul>
+      <% @user.accepted_friends.each do |friend| %>
+        <li><%=friend.name%>  (<%=friend.games.count%> games)</li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 </div>
 
