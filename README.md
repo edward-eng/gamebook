@@ -25,7 +25,7 @@ Develop an social network website that allows users to browse and save games.
 -don't be afraid to ask questions or let team know you're stuck on something.
 -never push to master.
 -good git workflow - clear commit messages often, push often, pull often.
--be aware of working on files that others might be working on to AVOID HUGE ASS MERGE CONFLICTS.
+-be aware of working on files that others might be working on to AVOID HUGE MERGE CONFLICTS.
 
 (good git workflow)
 1. LET WHOLE TEAM KNOW WHEN THERES AN UPDATED VERSION OF MASTER AFTER YOU CONFIRM MERGE
